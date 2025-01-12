@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio-Ashmit</title>
+  <!-- Include the Spline viewer script -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.30/build/spline-viewer.js"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+    /* Optional: Customize the viewer styling */
+    body {
+    margin: 0;
+    background-color: black;
+    color: white;
+     
+    overflow: hidden;
+    background: #24C6DC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #514A9D, #24C6DC);  
+    background: linear-gradient(to right, #514A9D, #24C6DC);
+    }
+
+    .navbar{
+        height: 50px;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        z-index: 2;
+    }
+
+    .info-cont{
+        margin-top: 10px;
+       position: relative;
+    }
+
+    .hero-text{
+        position: absolute;
+        bottom:50%;
+        font-family: "Orbitron", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 2.5rem;
+        left:10%;
+        top:30%;
+        z-index: 3;
+    }
+    
+    .hero-text p{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: medium;
+        opacity: 0.5;
+        font-weight: normal;
+    }
+    
+    a{
+        text-decoration: none;
+        color: cyan;
+        font-family: "Orbitron", sans-serif;
+      
+    }
+    .underline{
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" class="underline">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About Me</a>
+    </div>
+  <!-- Embed the Spline 3D viewer -->
+
+  <div class="info-cont">
+    <div class="hero-text">
+        A web developer, </br>problem solver
+        <p>
+            Hi! I am Ashmit
+            an enthusiast undergrad web developer.
+        </p>
+
+        <p>
+            I am learning web dev since 3 months.
+        </p>
+
+        <p>
+            Checkout some of my projects
+            <a href="projects.html">&rarr;</a>
+        </p>
+    </div>
+    
+      <spline-viewer url="robot.spline"></spline-viewer>
+  </div>
+</body>
+</html>

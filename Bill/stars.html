@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <div id="rating-container" style="display: flex; gap: 2px;"></div>
+
+<script>
+  function renderStarWithHorizontalFill(percentage) {
+    const clampedPercentage = Math.min(Math.max(percentage, 0), 100);
+
+    // Create the SVG dynamically for a single star
+    return `
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <!-- Define background -->
+        <defs>
+          <clipPath id="clip-${percentage}">
+            <rect x="0" y="0" width="${clampedPercentage}%" height="100%"></rect>
+          </clipPath>
+        </defs>
+        <!-- Full star background -->
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#ddd" />
+        <!-- Colored fill star -->
+        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="yellow" clip-path="url(#clip-${percentage})" />
+      </svg>
+    `;
+  }
+
+  function renderRatingStars(rating) {
+    const totalStars = 5; // Maximum stars
+    const fullStars = Math.floor(rating); // Number of fully filled stars
+    const partialFill = (rating - fullStars) * 100; // Percentage of the partially filled star
+    const container = document.getElementById('rating-container');
+    container.innerHTML = ''; // Clear the container
+
+    // Add full stars
+    for (let i = 0; i < fullStars; i++) {
+      container.innerHTML += renderStarWithHorizontalFill(100); // Fully filled
+    }
+
+    // Add a partially filled star if needed
+    if (partialFill > 0) {
+      container.innerHTML += renderStarWithHorizontalFill(partialFill);
+    }
+
+    // Add empty stars for the remaining
+    for (let i = fullStars + (partialFill > 0 ? 1 : 0); i < totalStars; i++) {
+      container.innerHTML += renderStarWithHorizontalFill(0); // Empty
+    }
+  }
+
+  // Example: Render 4.7/5 stars
+  renderRatingStars(3.5);
+</script>
+
+    
+</body>
+</html>

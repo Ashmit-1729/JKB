@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eatzy-items</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- navbar -->
+    <div
+    class="flex  z-50 flex-wrap bg-white fixed top-0 w-full shadow-md py-2 justify-center items-center gap-x-9 "
+  >
+     <!-- searchbar -->
+     <div class="flex justify-center text-black z-50">
+      <div class="bg-white rounded-full flex p-2  border border-[#50e3c2]">
+        <img src="images/search.svg" alt="" class="w-[30px]" />
+        <input
+          type="text"
+          name=""
+          id="searchInput"
+          class="rounded-full pl-2 outline-none"
+          placeholder="Search for food..."
+        />
+
+        <button
+          class="ml-2 glow-btn rounded-full bg-[#50e3c2] px-3"
+          id="searchBtn"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div>
+      <a href="#" class="font-bold text-[#50e3c2]">Discover</a>
+    </div>
+    <div>
+      <button id="login-btn">Login</button>
+    </div>
+    <div>
+      <button id="sign-btn">Sign Up</button>
+    </div>
+    <div>
+      <a href="/">Logout</a>
+    </div>
+    <div>
+      <div class="relative">
+        <img src="images/shopping-bag-svgrepo-com.svg" class="w-[25px] h-[25px]">
+        <div class="rounded-full w-[20px] h-[20px] bg-[#50e3c2] font-bold absolute top-[-5px] left-3 text-sm text-center" id="cart-count">
+            0
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="mt-12 h-[3.5rem]"></div>
+
+
+  <div class="flex ">
+
+    <div class="min-w-[20%] h-[100vh] fixed ml-2">
+      <div class="font-bold">
+        Price
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="price"> 0-499
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="price"> 500-1999
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="price"> 2000-4999
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="price"> 5000-9999
+      </div>
+      <div class="font-bold mt-5">
+        Delivery Time
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="dt"> 30min
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="dt"> 1hr
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="dt"> more than 1hr
+      </div>
+
+      <div class="font-bold mt-5">
+        Rating
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="rating"> 5
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="rating"> 4
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="rating"> 3
+      </div>
+      <div class="flex items-center gap-2">
+        <input type="radio" name="rating"> 2
+      </div>
+
+       
+    </div>
+
+    <div class="flex flex-wrap gap-10 ml-[23%] w-[80%]" id="item-box">
+      <!-- card -->
+    </div>
+  </div>
+
+      <!-- popups -->
+      <!-- Login Popup -->
+      <div
+        id="popup-login"
+        class=" popup-login fixed hidden inset-0 bg-black bg-opacity-50 z-50 justify-center items-center"
+      >
+        <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg">
+          <form>
+            <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
+            <label for="name" class="block text-sm font-medium mb-1">Name </label>
+            <input
+              type="text"
+              id="in-name"
+              name="name"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your name"
+            />
+            <label for="email" class="block text-sm font-medium mb-1">Email<span class="text-red-500">*</span></label>
+            <input
+              type="email"
+              id="in-email"
+              name="email"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password" class="block text-sm font-medium mb-1">Password<span class="text-red-500">*</span></label>
+            <input
+              type="password"
+              id="in-pass"
+              name="password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              type="submit"
+              class="w-full bg-[#50e3c2] text-white font-medium rounded-lg py-2 hover:bg-[#45d1b5] transition-colors"
+            >
+              Login
+            </button>
+          </form>
+          <button
+            class="mt-4 w-full bg-red-500 text-white font-medium rounded-lg py-2 hover:bg-red-600 transition-colors close-popup"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    
+      <!-- Signup Popup -->
+      <div
+        id="popup-signup"
+        class="popup-signup fixed hidden inset-0 bg-black bg-opacity-50 z-50 justify-center items-center"
+      >
+        <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg">
+          <form>
+            <h2 class="text-2xl font-bold text-center mb-4">Sign Up</h2>
+            <label for="name" class="block text-sm font-medium mb-1">Name</label>
+            <input
+              type="text"
+              id="signup-name"
+              name="name"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your name"
+            />
+            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              id="signup-email"
+              name="email"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password" class="block text-sm font-medium mb-1">Password</label>
+            <input
+              type="password"
+              id="signup-pass"
+              name="password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your password"
+              required
+            />
+            <label for="confirm-password" class="block text-sm font-medium mb-1">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="signup-confirm-pass"
+              name="confirm-password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Confirm your password"
+              required
+            />
+            <button
+              type="submit"
+              class="w-full bg-[#50e3c2] text-white font-medium rounded-lg py-2 hover:bg-[#45d1b5] transition-colors"
+            >
+              Sign Up
+            </button>
+          </form>
+          <button
+            class="mt-4 w-full bg-red-500 text-white font-medium rounded-lg py-2 hover:bg-red-600 transition-colors close-popup"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body w-full">
+          <div class="flex w-full justify-center">
+            <img src="../Bill/images/burger.png" class="product-image bg-white">
+          </div>
+          <div>
+              <div class="flex items-center justify-between mr-5 mb-5 ">
+                  <h1 class="text-2xl product-name ">Burger</h1>
+                  <h1 class="text-green-600 text-xl font-bold product-price">price</h2>
+              </div>
+              <p class="text-sm product-descp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+          </div>
+  
+          <!-- <div class="flex gap-5">
+              <div>
+                  <button>Add to Cart</button>
+              </div>
+              <div>
+                  <button>+</button>
+                  <span>1</span>
+                  <button>-</button>
+              </div>
+          </div> -->
+        </div>
+      </div>
+  
+      <div id="overlay"></div>
+
+
+  <script src="index.js"></script>
+  <script src="products.js"></script>
+
+     
+</body>
+</html>

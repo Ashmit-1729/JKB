@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="prod.css" rel="stylesheet" />
+    <link href="output.css" rel="stylesheet" />
+
+    <title>Ecommerce Website</title>
+  </head>
+  <body class="bg-[#232b36] text-white">
+    <!-- Navbar -->
+    <div
+      class="fixed top-0 w-[100vw] bg-white/20 backdrop-blur-md shadow-md z-50 "
+    >
+      <div class="flex gap-10 py-4 justify-center  items-center">
+        <div>
+          <a href="/" class="text-white hover:text-blue-600 font-medium text-lg"
+            >Products</a
+          >
+        </div>
+        <div>
+          <a
+            href="/cart.html"
+            class="text-white hover:text-blue-600 font-medium text-lg"
+            >Cart</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- searchbar -->
+    <div class="flex justify-center text-black mb-5 mt-20">
+      <div class="bg-white rounded-full flex p-2 shadow-2xl">
+        <img src="images/search.svg" alt="" class="w-[30px]" />
+        <input
+          type="text"
+          name=""
+          id="searchInput"
+          class="rounded-full pl-2 outline-none"
+          placeholder="Search for products..."
+        />
+
+        <button
+          class="ml-2 glow-btn rounded-full bg-[#99bcf6] px-3"
+          id="searchBtn"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+
+    <!-- filter-line -->
+    <div class="mx-5 flex overflow-x-scroll gap-5 mb-5" id="filter-line">
+      <!-- button -->
+    </div>
+    <!-- items flex-box -->
+    
+      <div class="flex flex-wrap gap-3 ml-5" id="item-box">
+        <!-- card -->
+      </div>
+    
+    <!-- toast -->
+    
+    
+    
+ 
+    <script src="index.js"></script>
+  </body>
+</html>

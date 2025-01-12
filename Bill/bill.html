@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=Orbitron:wght@400..900&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Imperial+Script&family=Orbitron:wght@400..900&display=swap');
+
+      body{
+        background-color: #1e272e;
+        color:#ffd32a;
+      }
+      .images {
+        width: 150px;
+      }
+
+      .flex {
+        font-family: 'Imperial Script';
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-around;
+        font-size: 2rem;
+      }
+
+      .flex input {
+        border: 2px solid #ffd32a;
+        border-radius: 6px;
+        background-color: transparent;
+        width: 50px;
+        text-align: center;
+        color: #ffd32a;
+        font-weight: bolder;
+      }
+
+      
+
+
+      input[type="number"] {
+        -moz-appearance: textfield; /* For Firefox */
+        -webkit-appearance: none; /* For Chrome, Safari, and Edge */
+        appearance: none; /* Standard property */
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .main-div {
+        display: flex;
+        width: 100%;
+       
+        justify-content: space-between;
+      }
+      #menu{
+        width: 45%;
+        border: 1.8px solid #ffd32a;
+        box-shadow: -2px -2px 3px black;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      #bill{
+        width: 45%;
+       
+
+      }
+
+      .bill-table{
+        width: 95%;
+        background-color: white;
+        text-align: center;
+        font-family: "Doto", sans-serif;
+        color: #1e272e;
+        font-size: large;
+        font-weight: bolder;
+      }
+      .bill-table thead td{
+        border-bottom: 1px dotted #1e272e;
+      }
+      .bill-table td{
+        height: 70px;
+      }
+      .bill-table tr{
+        border: 2px solid blue;
+      }
+
+      button{
+        cursor: pointer;
+      }
+      button:hover{
+        scale: 0.95;
+        transition-duration: 200ms;
+      }
+
+      #gen_bill{
+        background-color: #0be881;
+        color: white;
+        font-weight: bold;
+        border: 3px solid white;
+        border-radius: 11111px;
+        padding: 8px 15px;
+        text-shadow: 1px 1px 5px green;
+        font-size: medium;
+      }
+      #clear{
+        background-color: #ef5777;
+        color: white;
+        font-weight: bold;
+        border: 3px solid white;
+        border-radius: 11111px;
+        padding: 8px 15px;
+        text-shadow: 1px 1px 5px red;
+        font-size: medium;
+      }
+
+      .border-top{
+        border-top: 1px dotted #1e272e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+      <div id="menu">
+        <div id="item-1" class="flex sel">
+          <div>
+            <img class="images" src="images/pizza.png" alt="" />
+          </div>
+          <div>Pizza</div>
+          <div>₹150</div>
+          <div>
+            <input class="bill-items" min="1" type="number" />
+          </div>
+        </div>
+        <div id="item-2" class="flex sel">
+          <div>
+            <img class="images" src="images/samosa.png" alt="" />
+          </div>
+          <div>Samosa</div>
+          <div>₹20</div>
+          <div>
+            <input class="bill-items" min="1" type="number" />
+          </div>
+        </div>
+        <div id="item-3" class="flex sel">
+          <div>
+            <img class="images" src="images/dosa.png" alt="" />
+          </div>
+          <div>Dosa</div>
+          <div>₹80</div>
+          <div>
+            <input class="bill-items" min="1" type="number" />
+          </div>
+        </div>
+
+        <div id="item-4" class="flex sel">
+          <div>
+            <img class="images" src="images/burger.png" alt="" />
+          </div>
+          <div>Burger</div>
+          <div>₹75</div>
+          <div>
+            <input class="bill-items" min="1" type="number" />
+          </div>
+        </div>
+
+        <div id="item-5" class="flex sel">
+          <div>
+            <img class="images" src="images/thali.png" alt="" />
+          </div>
+          <div>Veg. Thali</div>
+          <div>₹300</div>
+          <div>
+            <input class="bill-items" min="1" type="number" />
+          </div>
+        </div>
+      </div>
+
+      <div id="bill">
+      </div>
+    </div>
+
+    <button id="gen_bill">Bill</button>
+    <button id="clear">Clear</button>
+    <div id="total"></div>
+
+    <script>
+      let billItems = document.querySelectorAll(".bill-items");
+      let selItems = document.querySelectorAll(".sel");
+      let billButton = document.querySelector("#gen_bill");
+      let clearSel = document.querySelector("#clear");
+
+      let menu = [
+        { name: "Pizza", price: 150 },
+        { name: "Samosa", price: 20 },
+        { name: "Dosa", price: 80 },
+        { name: "Burger", price: 75 },
+        { name: "Veg Thali", price: 300 },
+      ];
+
+      //function:
+      function generateBill(order,total){
+       
+        let bill = document.querySelector("#bill");
+        bill.innerHTML = "";
+        if(total<=0)
+        {
+          bill.innerText = "Please select the food first!"
+          return;
+        }
+        let billTable = document.createElement("table");
+        billTable.classList.add("bill-table")
+        bill.appendChild(billTable);
+        
+        billTable.innerHTML=`
+        <thead>
+          <tr>
+            <td>ITEM</td>
+            <td>PRICE</td>
+            <td>QTY.</td>
+            <td>TOTAL</td>
+          <tr>
+            <thead>
+         
+        `;
+        order.forEach((item)=>{
+          billTable.innerHTML+=`
+            <tr>
+              <td>${item.name}</td>  
+              <td>₹${item.price}</td>  
+              <td>${item.quantity}</td>  
+              <td>₹${item.sum}</td>  
+            </tr>
+          `;
+        })
+
+        // let lastTotal = document.createElement("div");
+        // bill.appendChild(lastTotal);
+        // lastTotal.innerHTML=`
+     
+        // Total:${total}
+      
+        // `;
+
+        billTable.innerHTML+=`
+          <tr>
+            <td colspan="3"  class="border-top"></td>
+            <td  class="border-top">Total = ₹${total}</td>
+          </tr>
+        `
+      }
+
+      //buttons:
+
+      billButton.addEventListener("click", () => {
+        let total = 0;
+        let order = [];
+        billItems.forEach((value, index) => {
+          let count = parseInt(value.value);
+          if (count > 0) {
+            total += menu[index].price * count;
+            let orderObj = {
+              ...menu[index],
+              "quantity":count,
+              "sum":count*(menu[index].price)
+            }
+            order.push(orderObj);
+            
+          }
+        });
+
+        
+        generateBill(order,total);
+      });
+
+      clear.addEventListener("click", () => {
+        billItems.forEach((value, index) => {
+          value.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>

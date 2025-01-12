@@ -1,0 +1,61 @@
+.modal{
+    position:fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+    background-color: white;
+    border-radius: 10px;
+    z-index: 100;
+    width: 500px;
+    max-width: 80%;
+}
+
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header{
+    padding: 10px 15px;
+    position: relative;
+}
+
+.modal-header .close-button{
+    position: absolute;
+    top: 0px;
+    right: 10px;
+}
+.modal-header .close-button:hover{
+    color: #50e3c2;
+}
+
+.modal-header .close-button{
+    cursor: pointer;
+    border:none;
+    outline:none;
+    background: none;
+    font-size: 2rem;
+}
+
+.modal-body{
+    padding: 10px 15px;
+}
+
+#overlay{
+    position: fixed;
+    z-index: 52;
+    transition: 200ms ease-in-out;
+    opacity: 0;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    pointer-events: all;
+    opacity: 1;
+}

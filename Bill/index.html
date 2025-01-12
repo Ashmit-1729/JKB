@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Imperial+Script&family=Orbitron:wght@400..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Imperial+Script&family=Orbitron:wght@400..900&display=swap");
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+
+      body {
+        background-color: #1e272e;
+        color: #ffd32a;
+      }
+      .images {
+        width: 150px;
+      }
+
+      .flex {
+        font-family: "Imperial Script";
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-around;
+        font-size: 2rem;
+      }
+
+      .flex input {
+        border: 2px solid #ffd32a;
+        border-radius: 6px;
+        background-color: transparent;
+        width: 50px;
+        text-align: center;
+        color: #ffd32a;
+        font-weight: bolder;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield; /* For Firefox */
+        -webkit-appearance: none; /* For Chrome, Safari, and Edge */
+        appearance: none; /* Standard property */
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .main-div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      #menu {
+        border: 1.8px solid #ffd32a;
+        box-shadow: -2px -2px 3px black;
+        border-radius: 20px;
+        padding: 20px;
+        height: 80vh;
+        overflow: hidden; /* This hides overflow outside the border-radius */
+        overflow-y: auto; /* Use 'auto' to scroll as needed */
+      }
+
+      #menu {
+        mask-image: radial-gradient(circle, black 100%, transparent 0);
+        -webkit-mask-image: radial-gradient(circle, black 100%, transparent 0);
+      }
+
+      /* width */
+      #menu::-webkit-scrollbar {
+        width: 7px;
+      }
+
+      /* Track */
+      #menu::-webkit-scrollbar-track {
+        background-color: #ffd42a3a;
+      }
+
+      /* Handle */
+      #menu::-webkit-scrollbar-thumb {
+        background: orange;
+        border-radius: 10px;
+        height: 10px;
+      }
+
+      #bill {
+        width: 45%;
+       
+      }
+
+      .bill-table {
+        width: 95%;
+        background-color: white;
+        text-align: center;
+        font-family: "Doto", sans-serif;
+        color: #1e272e;
+        font-size: large;
+        font-weight: bolder;
+       
+        
+      }
+      .bill-table thead td {
+        border-bottom: 1px dotted #1e272e;
+      }
+      .bill-table td {
+        height: 70px;
+      }
+      .bill-table tr {
+        border: 2px solid blue;
+      }
+
+      button {
+        cursor: pointer;
+      }
+      button:hover {
+        scale: 0.95;
+        transition-duration: 200ms;
+      }
+
+      #gen_bill {
+        background-color: #0be881;
+        color: white;
+        font-weight: bold;
+        border: 3px solid white;
+        border-radius: 11111px;
+        padding: 8px 15px;
+        text-shadow: 1px 1px 5px green;
+        font-size: medium;
+        width: 20%;
+      }
+      #clear {
+        background-color: #ef5777;
+        color: white;
+        font-weight: bold;
+        border: 3px solid white;
+        border-radius: 11111px;
+        padding: 8px 15px;
+        text-shadow: 1px 1px 5px red;
+        font-size: medium;
+        width: 20%;
+      }
+
+      .border-top {
+        border-top: 1px dotted #1e272e;
+      }
+
+      .menu-div {
+        width: 45%;
+      }
+
+      .button-div{
+        margin-top: 11px;
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+      }
+
+      .itemscount{
+        width: 30px;
+        background-color: #ffd32a;
+        color: #1e272e;
+        border-radius: 10000px;
+      }
+
+
+  
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+     
+      <div class="menu-div">
+        <div id="menu"></div>
+        <div class="button-div">
+          <button id="gen_bill">Bill</button>
+          <button id="clear">Clear</button>
+        </div>
+      </div>
+
+      <div id="bill"></div>
+    </div>
+
+    <div id="total"></div>
+
+    <script>
+      let billButton = document.querySelector("#gen_bill");
+      let clearSel = document.querySelector("#clear");
+      let menu = document.getElementById("menu");
+
+      let menuItems = [
+        { name: "Pizza", price: 299, img: "images/pizza.png" },
+        { name: "Samosa", price: 20, img: "images/samosa.png" },
+        { name: "Dosa", price: 80, img: "images/dosa.png" },
+        { name: "Burger", price: 75, img: "images/burger.png" },
+        { name: "Veg Thali", price: 299, img: "images/thali.png" },
+        { name: "Idli", price: 65, img: "images/idli.png" },
+        { name: "Hakka Noodles", price: 75, img: "images/noodles.png" },
+        { name: "Grilled Sandwich", price: 35, img: "images/sandwich.png" },
+        { name: "Pav Bhaji", price: 149, img: "images/pav-bhaji.png" },
+        { name: "Paneer Butter Masala", price: 259, img: "images/paneer.png" },
+      ];
+
+      function printItems(menuItems) {
+        menuItems.forEach((item) => {
+          menu.innerHTML += `<div class="flex">
+                <div>
+                    <img class="images" src=${item.img} alt=${item.name} />
+                </div>
+                <div>${item.name}</div>
+                <div>₹${item.price}</div>
+                <div>
+                    <input class="bill-items" min="1" type="number" />
+                </div>
+            </div>
+            `;
+        });
+
+        // menu.classList.add("scrollable");
+      }
+
+      window.onload = printItems(menuItems);
+
+      //function:
+      function generateBill(order, total) {
+        let bill = document.querySelector("#bill");
+        bill.innerHTML = "";
+        if (total <= 0) {
+          bill.innerText = "Please select the food first!";
+          return;
+        }
+        let billTable = document.createElement("table");
+        billTable.classList.add("bill-table");
+        bill.appendChild(billTable);
+
+        billTable.innerHTML = `
+        <thead>
+          <tr>
+            <td>ITEM</td>
+            <td>PRICE</td>
+            <td>QTY.</td>
+            <td>TOTAL</td>
+          <tr>
+            <thead>
+         
+        `;
+        order.forEach((item) => {
+          billTable.innerHTML += `
+            <tr>
+              <td>${item.name}</td>  
+              <td>₹${item.price}</td>  
+              <td>${item.quantity}</td>  
+              <td>₹${item.sum}</td>  
+            </tr>
+          `;
+        });
+
+        // let lastTotal = document.createElement("div");
+        // bill.appendChild(lastTotal);
+        // lastTotal.innerHTML=`
+
+        // Total:${total}
+
+        // `;
+
+        billTable.innerHTML += `
+          <tr>
+            <td colspan="3"  class="border-top"></td>
+            <td  class="border-top">Total = ₹${total}</td>
+          </tr>
+        `;
+
+        let dateObj = new Date();
+        let date = dateObj.getDate();
+        let month = dateObj.getMonth()+1;
+        let year = dateObj.getFullYear();
+        let hour = dateObj.getHours();
+        let minutes = dateObj.getMinutes();
+        let sec = dateObj.getSeconds();
+        console.log(hour);
+        console.log(minutes);
+        console.log(sec);
+
+        billTable.innerHTML += `
+          <tr>
+            <td colspan="3"  class="border-top"></td>
+            <td  class="border-top">Date:${date}/${month}/${year}</td>
+          </tr>
+          <tr>
+            <td colspan="3"></td>
+            <td> Time: ${hour}:${minutes}:${sec}</td>
+          </tr>
+
+
+          
+        `;
+        
+
+      }
+
+      //buttons:
+
+      billButton.addEventListener("click", () => {
+        let billItems = document.querySelectorAll(".bill-items");
+        let selItems = document.querySelectorAll(".sel");
+        let total = 0;
+        let order = [];
+        billItems.forEach((value, index) => {
+          let count = parseInt(value.value);
+          if (count > 0) {
+            total += menuItems[index].price * count;
+            let orderObj = {
+              ...menuItems[index],
+              quantity: count,
+              sum: count * menuItems[index].price,
+            };
+            order.push(orderObj);
+          }
+        });
+
+        generateBill(order, total);
+      });
+
+      clear.addEventListener("click", () => {
+        let billItems = document.querySelectorAll(".bill-items");
+        let bill = document.querySelector("#bill");
+        bill.innerHTML="";
+        billItems.forEach((value, index) => {
+          value.value = "";
+        });
+      });
+    </script>
+  </body>
+</html>

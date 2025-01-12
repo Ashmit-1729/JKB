@@ -1,0 +1,151 @@
+body{
+    background-color: black;
+}
+
+.roads{
+    margin: center;
+}
+
+.lane{
+    position: relative;
+    width: 300px;
+    height: 80vh;
+    /* background-image: url("https://generalistprogrammer.com/wp-content/uploads/2020/01/unity-2d-racing-game-tutorial-scrolling-clouds.gif"); */
+    background-image: url("road-hd.jpg");
+    background-size: contain;
+}
+
+.lane-mid :nth-child(1){
+    position: absolute;
+    bottom:-50px;
+    left:-30%
+
+}
+.lane-mid :nth-child(2){
+    position: absolute;
+    bottom:-50px;
+    left:70%;
+    
+}
+
+
+
+.roads{
+    margin:auto;
+    display: flex;
+     border: 10px solid rgb(67, 67, 255);
+     width: 60%;
+     border-radius: 12px;
+     /* box-shadow: 20px 20px 10px black inset; */
+}
+
+.car{
+    height: 10vh;
+    /* width: 100px; */
+    display: inline-block;
+    /* border: 2px solid red; */
+    position: absolute;
+    left:32%;
+    bottom:0;
+    z-index: 2;
+    transition-duration: 1s;
+    animation-name: moveAhead;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear;
+    
+}
+
+.car::before{
+    content: "You";
+
+}
+
+
+.car-left{
+    height: 10vh;
+    display: inline-block;
+    /* border: 2px solid red; */
+    position: absolute;
+    left:32%;
+    bottom:0;
+    /* z-index: 2; */
+    transition-duration: 1s;
+    animation-name: moveAhead;
+    animation-delay: 1s;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear;
+}
+.car-right{
+    height: 10vh;
+    display: inline-block;
+    /* border: 2px solid red; */
+    position: absolute;
+    left:32%;
+    bottom:0;
+    /* z-index: 2; */
+    transition-duration: 1s;
+    animation-name: moveAhead;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function:linear;
+}
+
+.left-button:hover ~ img{
+    left:-70%;
+    transition-duration: 1s;
+ 
+}
+.right-button:hover ~ img{
+    
+    left:130%;
+    transition-duration: 1s;
+}
+
+
+.left-button{
+    background-color: rgb(29, 198, 255);
+    color:rgb(4, 0, 255);
+    font-size: larger;
+    border-radius: 9999px;
+    border: none;
+    font-weight: bolder;
+    width: 10vw;
+    box-shadow: -6px 6px 0px rgb(41, 47, 126);
+    cursor: pointer;
+    transition-duration: 200ms;
+}
+.left-button:hover{
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px rgb(55, 1, 1);
+}
+
+.right-button{
+    background-color: rgb(29, 198, 255);
+    color:rgb(4, 0, 255);
+    transition-duration: 200ms;
+    font-size: larger;
+    border-radius: 9999px;
+    border: none;
+    font-weight: bolder;
+    width: 10vw;
+    box-shadow: -6px 6px 0px rgb(41, 47, 126);
+    cursor: pointer;
+}
+.right-button:hover{
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px rgb(55, 1, 1);
+}
+
+
+@keyframes moveAhead {
+   from{
+    bottom:0px;
+   }
+   to{
+    bottom:87%;
+   }
+}
+

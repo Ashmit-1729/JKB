@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+body{
+    background-color: #000E25;
+    margin: 0;
+}
+
+hr{
+    border-color: cyan;
+}
+a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+table{
+    border-spacing: 0;
+    border-collapse: separate;
+
+}
+
+.heading{
+    color:cyan;
+    font-family: kanit;
+    font-size: 50px;
+    margin-top: 100px;
+    letter-spacing: 3px;
+}
+
+.heading:hover{
+    text-shadow: 2px 2px 18px cyan;
+    transition-duration: 200ms;
+}
+
+.outline{
+    padding:2px;
+    border-radius: 5px;
+}
+
+.outline:hover u{
+    text-shadow: 2px 2px 18px cyan;
+    transition-duration: 200ms;
+}
+
+table{
+    background-color:#75a9ed24;
+    border:2px solid cyan;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* navbar */
+
+
+.navbar{
+    display: flex;
+    position: fixed;
+    top:0px;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: cyan;
+    margin:0;
+    color:#000E25;
+    height: 50px;
+    box-shadow: 5px 5px 5px #000E25;
+}
+
+.navbar a{
+    text-decoration: none;
+    margin-left:25px;
+    margin-right:25px;
+    color:#000E25;
+    font-weight: bold;
+    font-family: kanit;
+    border-radius: 5px;
+    padding: 2px;
+    box-sizing: border-box;
+    
+}
+
+.navbar a:hover{
+    text-decoration: underline;
+    transition-duration: 300ms;
+}
+.border-over{
+    border:2px solid #000E25;
+    box-shadow: 2px 2px  #000E25;
+    text-decoration: none;
+}
+
+.border-over:hover{
+    text-decoration: none;
+}
+
+.fab{
+    position: fixed;
+    cursor: pointer;
+    right: 20px;
+    bottom:20px;
+    width: 50px;
+    height: 50px;
+    background-color: cyan;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 3px  #000E25;
+}
+
+.fab a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+.fab img{
+    width: 30px;
+    height: 30px;
+    margin-top:10px;
+}
+
+.fab:hover{
+    opacity: 0.5;
+}
+
+.img-table{
+    margin-top:50px;
+}
+
+
+.vid-table{
+    margin-top:50px;
+}
+

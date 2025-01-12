@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&family=Orbitron:wght@400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+.glow-btn:hover{
+    animation-name: glow;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes glow{
+    from{
+        box-shadow: none;
+    }
+
+    to{
+        box-shadow: 0px 0px 10px rgba(147, 174, 220, 0.774);
+    }
+
+}
+
+
+.border-filter{
+    border: 3px solid white;
+}
+
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#filter-line::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #filter-line {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+
+/* Star container */
+.star-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* Star styles */
+  .star {
+    width: 25px;
+    height: 25px;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    background-color: #ccc; /* Empty star color */
+  }
+  
+  .star-filled {
+    background-color: #ffc107; /* Filled star color */
+  }
+  
+  .star-half {
+    background: linear-gradient(
+      to right,
+      #ffc107 50%,
+      #ccc 50%
+    );
+  }
+  

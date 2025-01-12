@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactMe</title>
+    <link rel="stylesheet" href="contact.css">
+
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html" >Home</a>
+        <a href="Contact.html" class="border-over">Contact Me</a>
+        <a href="grid_images.html">Images</a>
+        <a href="grid_videos.html">Videos</a>
+    </div>
+
+    <div class="form-block">
+        <form action="">
+
+            <table>
+                <tr>
+                    <td>
+                        <label for="">Name</label>
+                    </td>
+                    <td>
+                        <input type="text" required />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="">Email</label></td>
+                    <td> <input type="email" required /></td>
+                </tr>
+
+                <tr>
+                    <td><label for="">Phone no.</label></td>
+                    <td> <input type="text"  pattern="[789][0-9]{9}" required /></td>
+                </tr>
+
+                <tr>
+                    <td><label for="">Message</label></td>
+                    <td><textarea name="hello" id="lello"></textarea></td>
+                </tr>
+            </table>
+        
+            <div class="center">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+      </div>
+</body>
+</html>

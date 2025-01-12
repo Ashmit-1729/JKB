@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="prod.css" rel="stylesheet" />
+  <link href="output.css" rel="stylesheet" />
+  <script src="cart.js" defer></script>
+  <title>Cart</title>
+</head>
+<body class="bg-[#232b36] text-white">
+  <!-- Navbar -->
+  <div class="fixed top-0 w-[100vw] bg-white/20 backdrop-blur-md shadow-md z-50">
+    <div class="flex gap-10 py-4 justify-center items-center">
+      <div>
+        <a href="/" class="text-white hover:text-blue-600 font-medium text-lg">Products</a>
+      </div>
+      <div>
+        <a href="/cart.html" class="text-white hover:text-blue-600 font-medium text-lg">Cart</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Section -->
+  <div class="mt-20 flex flex-col items-center">
+    <h1 class="text-3xl font-bold mb-10">Shopping Cart</h1>
+    <div id="cart-items" class="w-[80vw] bg-[#313c4c] rounded-xl shadow-lg p-5 flex flex-col gap-5">
+    </div>
+    <div id="total-price" class="text-xl font-bold text-[#99bcf6] mt-5"></div>
+  </div>
+</body>
+</html>

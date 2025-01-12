@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Popup/Modal</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+  </head>
+  <body>
+    <div>
+      <button data-modal-target="#modal">Open Popup</button>
+    </div>
+
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body w-full">
+
+        <img src="../Bill/images/burger.png" class="">
+        <div>
+            <div class="flex items-center justify-between mr-5 ">
+                <h1 class="text-2xl">Burger</h1>
+                <h1 class="text-green-600">price</h2>
+            </div>
+            <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+        </div>
+
+        <div class="flex gap-5">
+            <div>
+                <button>Add to Cart</button>
+            </div>
+            <div>
+                <button>+</button>
+                <span>1</span>
+                <button>-</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="overlay"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
