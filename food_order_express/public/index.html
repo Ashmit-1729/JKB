@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Delivery Website</title>
+    <script
+      src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+      type="module"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+  </head>
+  <body>
+
+    <!-- navbar -->
+    <div
+      class="flex fixed top-0 w-full shadow-md py-5 justify-center items-center gap-x-9 z-50"
+    >
+      <div>
+        <a href="#" class="font-bold text-[#50e3c2]">Home</a>
+      </div>
+      <div>
+        <a href="products">Discover</a>
+      </div>
+      <div>
+        <button id="login-btn">Login</button>
+      </div>
+      <div>
+        <button id="sign-btn">Sign Up</button>
+      </div>
+    </div>
+
+    <div class="mt-14 h-20"></div>
+
+    <!-- hero section -->
+    <div class="flex w-full">
+        <div class="w-full  md:w-1/2 sm:px-[10px]  md:px-[100px] py-[2.75rem] flex-col gap-5">
+               <span class="text-6xl font-extrabold">Fastest</span> 
+               <div class="text-6xl font-extrabold"> 
+                <span class="text-6xl font-extrabold text-[#50e3c2]" >Delivery</span> &
+               </div>
+               <div class="text-6xl font-extrabold">
+                Easy <span class="text-6xl font-extrabold text-[#50e3c2]" >Pickup</span> 
+               </div>
+
+               <div class="text-justify mt-5 text-lg">
+                Craving your favorite meals? Welcome to <span class="font-bold">Eatzy</span>  your go-to destination for quick, easy, and delicious food delivery! Explore a variety of cuisines from the best restaurants near you, all at your fingertips. 
+               </div>
+
+               <button class="py-3 rounded-lg px-5 bg-[#50e3c2] mt-5" id="order">
+                Start Ordering
+               </button>
+        </div>
+        <dotlottie-player
+          src="https://lottie.host/c5ce89bc-d7c3-465f-a29c-100d89abd044/5i3W28hFqm.lottie"
+          background="transparent"
+          speed="1"
+          style="width: 800px; margin-right: 5px;"
+          loop
+          autoplay
+          class="hidden md:block "
+        >
+        </dotlottie-player>
+    </div>
+
+    <!-- popups -->
+      <!-- Login Popup -->
+      <div
+        id="popup-login"
+        class=" popup-login fixed hidden inset-0 bg-black bg-opacity-50 z-50 justify-center items-center"
+      >
+        <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg">
+          <form>
+            <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
+            <label for="name" class="block text-sm font-medium mb-1">Name </label>
+            <input
+              type="text"
+              id="in-name"
+              name="name"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your name"
+            />
+            <label for="email" class="block text-sm font-medium mb-1">Email<span class="text-red-500">*</span></label>
+            <input
+              type="email"
+              id="in-email"
+              name="email"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password" class="block text-sm font-medium mb-1">Password<span class="text-red-500">*</span></label>
+            <input
+              type="password"
+              id="in-pass"
+              name="password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              type="submit"
+              class="w-full bg-[#50e3c2] text-white font-medium rounded-lg py-2 hover:bg-[#45d1b5] transition-colors"
+            >
+              Login
+            </button>
+          </form>
+          <button
+            class="mt-4 w-full bg-red-500 text-white font-medium rounded-lg py-2 hover:bg-red-600 transition-colors close-popup"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    
+      <!-- Signup Popup -->
+      <div
+        id="popup-signup"
+        class="popup-signup fixed hidden inset-0 bg-black bg-opacity-50 z-50 justify-center items-center"
+      >
+        <div class="bg-white rounded-lg p-6 w-full max-w-sm shadow-lg">
+          <form>
+            <h2 class="text-2xl font-bold text-center mb-4">Sign Up</h2>
+            <label for="name" class="block text-sm font-medium mb-1">Name</label>
+            <input
+              type="text"
+              id="signup-name"
+              name="name"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your name"
+            />
+            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              id="signup-email"
+              name="email"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="password" class="block text-sm font-medium mb-1">Password</label>
+            <input
+              type="password"
+              id="signup-pass"
+              name="password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Enter your password"
+              required
+            />
+            <label for="confirm-password" class="block text-sm font-medium mb-1">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="signup-confirm-pass"
+              name="confirm-password"
+              class="w-full border border-gray-300 rounded-lg p-2 mb-4 focus:ring-2 focus:ring-[#50e3c2] focus:outline-none"
+              placeholder="Confirm your password"
+              required
+            />
+            <button
+              type="submit"
+              class="w-full bg-[#50e3c2] text-white font-medium rounded-lg py-2 hover:bg-[#45d1b5] transition-colors"
+            >
+              Sign Up
+            </button>
+          </form>
+          <button
+            class="mt-4 w-full bg-red-500 text-white font-medium rounded-lg py-2 hover:bg-red-600 transition-colors close-popup"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+
+  <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <div class="flex z-50 flex-wrap bg-white fixed top-0 w-full shadow-md py-2 justify-center items-center gap-x-9">
+        <!-- Searchbar -->
+        <div class="flex justify-center text-black z-50">
+            <div class="bg-white rounded-full flex p-2 border border-[#50e3c2]">
+                <img src="images/search.svg" alt="" class="w-[30px]" />
+                <input type="text" id="searchInput" class="rounded-full pl-2 outline-none" placeholder="Search for food..." />
+                <button class="ml-2 glow-btn rounded-full bg-[#50e3c2] px-3" id="searchBtn">Search</button>
+            </div>
+        </div>
+        <div><a href="/products">Discover</a></div>
+        <div><button id="login-btn">Login</button></div>
+        <div><button id="sign-btn">Sign Up</button></div>
+        <div><a href="/">Logout</a></div>
+    </div>
+    <div class="mt-12 h-[3.5rem]"></div>
+
+    <!-- Cart Items Section -->
+    <div class="mt-16 max-w-4xl mx-auto">
+        <!-- Cart Items -->
+        <div id="cart-items" class="space-y-4"></div>
+
+        <!-- Total Price -->
+        <div class="text-right mt-6">
+            <h2 class="text-xl font-semibold">
+                Total: <span id="total-price" class="text-green-500">$0.00</span>
+            </h2>
+            <button
+                id="checkout-btn"
+                class="bg-[#50e3c2] text-white px-6 py-2 mt-4 rounded-lg hover:bg-[#45d1b5] transition"
+            >
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Link the JavaScript file -->
+    <script src="cart.js"></script>
+</body>
+</html>
